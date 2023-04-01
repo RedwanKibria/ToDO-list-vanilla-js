@@ -48,3 +48,24 @@ function addTodo(event) {
     //Clear todo Input Value 
     todoInput.value = "";
 }
+
+function deleteCheck(e) {
+    const item = e.target;
+
+    //Delete Todo
+    if (item.classList[0] === 'trash-btn') {
+        const todo = item.parentElement;
+        //Animation
+        todo.classList.add('fall');
+        removeLocalTodos(todo);
+        todo.addEventListener('transitionend', function () {
+            todo.remove();
+        })
+    }
+
+    //Check mark
+    if (item.classList[0] === 'complete-btn') {
+        const todo = item.parentElement;
+        todo.classList.toggle('completed');
+    }
+}
