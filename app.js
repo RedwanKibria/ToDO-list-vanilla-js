@@ -142,3 +142,16 @@ function getTodos() {
         todoList.appendChild(todoDiv);
     })
 }
+
+function removeLocalTodos(todo) {
+    //Check (Do i already have things in there?)
+    let todos;
+    if (localStorage.getItem('todos') === null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem('todos'));
+    }
+    const todoIndex = todo.cildren[0].innerText;
+    todos.splice(todos.indexOf(todoIndex), 1);
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
